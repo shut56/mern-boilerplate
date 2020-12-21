@@ -7,6 +7,8 @@ Install modules
 yarn install
 ```
 Run it!
+
+Start only server
 ```
 yarn run watch:server
 ```
