@@ -12,3 +12,13 @@ Start server only
 ```
 yarn run watch:server
 ```
+
+Build a project
+```
+yarn run dev:build
+```
+
+Run webpack development server
+```
+yarn run dev:watch
+```
