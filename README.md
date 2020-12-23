@@ -8,7 +8,7 @@ yarn install
 ```
 Run it!
 
-Start only server
+Start server only
 ```
 yarn run watch:server
 ```
