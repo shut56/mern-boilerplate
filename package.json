@@ -5,11 +5,13 @@
   "author": "VitalyK",
   "license": "MIT",
   "scripts": {
+    "dev": "yarn run watch:server & yarn run dev:server",
     "watch:server": "nodemon server/server.js",
-    "dev:build": "webpack --config webpack.dev.config.js",
-    "dev:watch": "webpack serve --config webpack.dev.config.js"
+    "watch:client": "webpack serve --config webpack.dev.config.js",
+    "build:client": "webpack --config webpack.dev.config.js"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"

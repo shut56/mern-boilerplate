@@ -1,8 +1,10 @@
 const express = require('express')
+require('dotenv').config()
 
 const server = express()
-const port = 8080
+const PORT = process.env.PORT || 8080
 
+server.use('/static', express.static(`${__dirname}/public`))
 server.use(express.json({ limit: '50kb' }))
 server.use((req, res, next) => {
   console.log(`${req.method} ${req.url} from ${req.ip}`)
@@ -26,6 +28,6 @@ server.post('/users', (req, res) => {
   res.json(user)
 })
 
-server.listen(port)
+server.listen(PORT)
 
-console.log(`Serving at http://localhost:${port}`)
+console.log(`Serving at http://localhost:${PORT}`)

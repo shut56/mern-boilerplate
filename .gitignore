@@ -1,2 +1,5 @@
+# Environment
+.env
+
 # Modules for NODE JS 
 node_modules
