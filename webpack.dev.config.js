@@ -23,7 +23,8 @@ const config = {
       errors: true
     },
     proxy: {
-      '/*': 'localhost:8080'
+      context: ['/api'],
+      target: 'http://localhost:8080'
     }
   },
   module: {

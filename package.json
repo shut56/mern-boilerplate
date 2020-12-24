@@ -5,7 +5,7 @@
   "author": "VitalyK",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn run watch:server & yarn run dev:server",
+    "dev": "yarn run watch:server & yarn run watch:client",
     "watch:server": "nodemon server/server.js",
     "watch:client": "webpack serve --config webpack.dev.config.js",
     "build:client": "webpack --config webpack.dev.config.js"

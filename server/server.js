@@ -15,8 +15,8 @@ server.get('/', (req, res) => {
   res.send('Express server')
 })
 
-server.get('/manager', (req, res) => {
-  res.send('This is MANAGER page')
+server.get('/api/v1/user', (req, res) => {
+  res.send('API: user')
 })
 
 server.post('/users', (req, res) => {
