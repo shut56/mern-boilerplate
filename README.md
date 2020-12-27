@@ -6,19 +6,23 @@ Install modules
 ```
 yarn install
 ```
-Run it!
 
-Start server only
+Run a project
+```
+yarn run dev
+```
+
+Run server only
 ```
 yarn run watch:server
 ```
 
-Build a project
+Run webpack development server (client)
 ```
-yarn run dev:build
+yarn run watch:client
 ```
 
-Run webpack development server
+Build a project
 ```
-yarn run dev:watch
+yarn run build:client
 ```
