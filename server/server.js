@@ -1,10 +1,19 @@
 const express = require('express')
+const http = require('http')
+const io = require('socket.io')
+
 require('dotenv').config()
 
 const server = express()
+const httpServer = http.createServer(server)
+const socketIO = io(httpServer, {
+  path: '/ws'
+})
+
 const PORT = process.env.PORT || 8080
 
 server.use('/static', express.static(`${__dirname}/public`))
+
 server.use(express.json({ limit: '50kb' }))
 server.use((req, res, next) => {
   console.log(`${req.method} ${req.url} from ${req.ip}`)
@@ -15,19 +24,13 @@ server.get('/', (req, res) => {
   res.send('Express server')
 })
 
-server.get('/api/v1/user', (req, res) => {
-  res.send('API: user')
+socketIO.on('connection', (socket) => {
+  console.log(`Hello ${socket.id}`)
+  socket.on('disconnect', () => {
+    console.log(`Bye-bye ${socket.id}`)
+  })
 })
 
-server.post('/users', (req, res) => {
-  const user = {
-    name: req.body.name,
-    age: req.body.age,
-    time: new Date()
-  }
-  res.json(user)
-})
-
-server.listen(PORT)
+httpServer.listen(PORT)
 
 console.log(`Serving at http://localhost:${PORT}`)

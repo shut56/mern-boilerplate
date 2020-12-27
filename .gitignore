@@ -3,3 +3,6 @@
 
 # Modules for NODE JS 
 node_modules
+
+# Production
+dist

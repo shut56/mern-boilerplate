@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './style.scss'
 
-const Main = () => {
-  return (
-    <div>This is Main Component!</div>
-  )
-}
+import './assets/styles/style.scss'
+
+import Root from './config/root'
 
 const target = document.querySelector('#root')
 
-ReactDOM.render(<Main />, target)
+const render = (Component) => {
+  ReactDOM.render(
+    <Component />,
+    target
+  )
+}
+
+render(Root)
