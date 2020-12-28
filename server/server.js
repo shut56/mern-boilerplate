@@ -1,16 +1,13 @@
-const express = require('express')
-const http = require('http')
-const io = require('socket.io')
+import express from 'express'
+import http from 'http'
+import io from 'socket.io'
 
-require('dotenv').config()
+import config from './config'
 
 const server = express()
 const httpServer = http.createServer(server)
-const socketIO = io(httpServer, {
-  path: '/ws'
-})
 
-const PORT = process.env.PORT || 8080
+const PORT = config.port
 
 server.use('/static', express.static(`${__dirname}/public`))
 
@@ -24,12 +21,19 @@ server.get('/', (req, res) => {
   res.send('Express server')
 })
 
-socketIO.on('connection', (socket) => {
-  console.log(`Hello ${socket.id}`)
-  socket.on('disconnect', () => {
-    console.log(`Bye-bye ${socket.id}`)
+if (config.socketsEnabled) {
+  console.log('Sockets Enabled: ', config.socketsEnabled)
+  const socketIO = io(httpServer, {
+    path: '/ws'
   })
-})
+
+  socketIO.on('connection', (socket) => {
+    console.log(`Hello ${socket.id}`)
+    socket.on('disconnect', () => {
+      console.log(`Bye-bye ${socket.id}`)
+    })
+  })
+}
 
 httpServer.listen(PORT)
 

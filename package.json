@@ -6,11 +6,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn run watch:server & yarn run watch:client",
-    "watch:server": "nodemon server/server.js",
+    "watch:server": "nodemon start.js",
     "watch:client": "webpack serve --config webpack.dev.config.js",
     "build:client": "rm -rf dist & webpack --config webpack.dev.config.js"
   },
   "dependencies": {
+    "@babel/register": "^7.12.10",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "react": "^17.0.1",

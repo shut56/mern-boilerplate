@@ -27,7 +27,7 @@
     "deferredPrompt": true,
     "axios": true,
     "globalThis": true,
-    "ENABLE_SOCKETS": true
+    "SOCKETS_ENABLE": true
   },
   "rules": {
     "space-before-function-paren": "off",

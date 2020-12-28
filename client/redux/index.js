@@ -14,9 +14,11 @@ const composedEnhancers = composeFunc(applyMiddleware(...middleware))
 
 const store = createStore(rootReducer(), initialState, composedEnhancers)
 
-// eslint-disable-next-line
-const socket = io(`${window.location.origin}`, {
-  path: '/ws'
-})
+if (SOCKETS_ENABLE || false) {
+  // eslint-disable-next-line
+  const socket = io(`${window.location.origin}`, {
+    path: '/ws'
+  })
+}
 
 export default store

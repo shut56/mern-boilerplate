@@ -1,7 +1,12 @@
+require('dotenv').config()
+
 const { resolve } = require('path')
+const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+
+const { PORT, SOCKETS_ENABLE } = process.env
 
 const config = {
   entry: './client/main.js',
@@ -13,7 +18,7 @@ const config = {
   },
   devServer: {
     hot: true,
-    open: true,
+    // open: true,
     contentBase: resolve(__dirname, 'dist'),
     port: 8081,
     host: 'localhost',
@@ -24,8 +29,8 @@ const config = {
     },
     proxy: {
       context: ['/api', '/ws', '/socket.io'],
-      target: `http://localhost:${process.env.PORT || 8080}`,
-      ws: true
+      target: `http://localhost:${PORT || 8080}`,
+      ws: (process.env.SOCKETS_ENABLE === 'true')
     }
   },
   module: {
@@ -65,6 +70,9 @@ const config = {
           to: 'index.html'
         }
       ]
+    }),
+    new webpack.DefinePlugin({
+      SOCKETS_ENABLE: SOCKETS_ENABLE === 'true'
     })
   ]
 }
