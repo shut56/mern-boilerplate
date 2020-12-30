@@ -1,8 +1,10 @@
 import express from 'express'
 import http from 'http'
 import io from 'socket.io'
+import mongoose from 'mongoose'
 
 import config from './config'
+import { userModel } from './mongodb/models'
 
 const server = express()
 const httpServer = http.createServer(server)
@@ -32,6 +34,17 @@ if (config.socketsEnabled) {
     socket.on('disconnect', () => {
       console.log(`Bye-bye ${socket.id}`)
     })
+  })
+}
+
+if (config.mongoEnabled) {
+  console.log('MongoDB Enabled: ', config.mongoEnabled)
+  mongoose.connect(config.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+
+  server.post('/api/v1/user', (req, res) => {
+    const newUser = req.body
+    userModel.create(newUser)
+    res.send('User added')
   })
 }
 
