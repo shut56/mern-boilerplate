@@ -37,8 +37,6 @@ if (config.socketsEnabled) {
   })
 }
 
-const x
-
 if (config.mongoEnabled) {
   console.log('MongoDB Enabled: ', config.mongoEnabled)
   mongoose.connect(config.mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
