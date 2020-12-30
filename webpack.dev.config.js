@@ -28,9 +28,9 @@ const config = {
       errors: true
     },
     proxy: {
-      context: ['/api', '/ws', '/socket.io'],
+      context: ['/api', '/ws'],
       target: `http://localhost:${PORT || 8080}`,
-      ws: (process.env.SOCKETS_ENABLE === 'true')
+      ws: (SOCKETS_ENABLE === 'true')
     }
   },
   module: {
