@@ -8,7 +8,8 @@
     "dev": "yarn run watch:server & yarn run watch:client",
     "watch:server": "nodemon start.js",
     "watch:client": "webpack serve --config webpack.dev.config.js",
-    "build:client": "rm -rf dist & webpack --config webpack.dev.config.js"
+    "build:client": "rm -rf dist & webpack --config webpack.dev.config.js",
+    "lint": "eslint ./client/**/**.js ./server/**/**.js"
   },
   "dependencies": {
     "@babel/register": "^7.12.10",
@@ -50,8 +51,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
+      "pre-commit": "npm lint & npm test",
+      "pre-push": "npm lint & npm test"
     }
   }
 }
