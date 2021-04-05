@@ -72,6 +72,10 @@ const config = {
           to: 'assets/images'
         },
         {
+          from: `client/assets/fonts`,
+          to: 'assets/fonts'
+        },
+        {
           from: `server/public/favicon.ico`,
           to: '[name][ext]'
         }

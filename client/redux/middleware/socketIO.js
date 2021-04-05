@@ -5,19 +5,23 @@ const socketIOMiddleware = () => {
 
   return (store) => {
     socket = io(`${window.location.origin}`, {
-      path: '/ws'
+      path: '/ws',
+      autoConnect: false
     })
 
     const { dispatch, getState } = store
-    // console.log('Store?', !!dispatch, !!getState)
+    // eslint-disable-next-line
+    console.log('Store?', !!dispatch, !!getState)
 
     socket.on('SOCKET_IO', (message) => {
       switch (message.type) {
         case 'message:get': {
+          // eslint-disable-next-line
           console.log(message.payload)
           break
         }
         default: {
+          // eslint-disable-next-line
           console.log('Server Message Received')
         }
       }
