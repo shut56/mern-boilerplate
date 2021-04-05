@@ -1,18 +1,50 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
+import { Provider, useSelector } from 'react-redux'
 
-import store from '../redux'
+import store, { history } from '../redux'
+
+import Startup from './startup'
+
+import Main from '../components/main'
+
+const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
+  const { user, token } = useSelector((s) => s.auth)
+  const func = (props) => {
+    return !!user && !!token ? (
+      <Redirect to="/channels" />
+    ) : (
+      <Component {...props} />
+    )
+  }
+  return <Route {...rest} render={func} />
+}
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const { user, token } = useSelector((s) => s.auth)
+  const func = (props) => {
+    return !!user && !!token ? (
+      <Component {...props} />
+    ) : (
+      <Redirect to="/login" />
+    )
+  }
+  return <Route {...rest} render={func} />
+}
 
 const Root = () => {
   return (
     <Provider store={store}>
-      <div>
-        <div className="flex items-center justify-center h-screen">
-          <div className="bg-indigo-800 hover:text-red-500 text-white font-bold rounded-lg border shadow-lg p-10">
-            This is Root component
-          </div>
-        </div>
-      </div>
+      <ConnectedRouter history={history}>
+        <Startup>
+          <Switch>
+            <Route exact path="/" component={() => <Main />} />
+            <OnlyAnonymousRoute exact path="/anonymous" component={() => <Main />} />
+            <PrivateRoute exact path="/private" component={() => <Main />} />
+          </Switch>
+        </Startup>
+      </ConnectedRouter>
     </Provider>
   )
 }
