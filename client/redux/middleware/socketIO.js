@@ -11,7 +11,7 @@ const socketIOMiddleware = () => {
 
     const { dispatch, getState } = store
     // eslint-disable-next-line
-    console.log('Store?', !!dispatch, !!getState)
+    console.log('Store', !!dispatch && !!getState)
 
     socket.on('SOCKET_IO', (message) => {
       switch (message.type) {
