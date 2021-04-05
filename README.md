@@ -7,7 +7,7 @@ Install modules
 yarn install
 ```
 
-Run a project
+Run a project in development mode
 ```
 yarn run dev
 ```
@@ -17,12 +17,12 @@ Run server only
 yarn run watch:server
 ```
 
-Run webpack development server (client)
+Run client only
 ```
 yarn run watch:client
 ```
 
 Build a project
 ```
-yarn run build:client
+yarn run build:prod
 ```
