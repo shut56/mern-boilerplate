@@ -2,9 +2,10 @@ require('dotenv').config()
 
 const { resolve } = require('path')
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const { SOCKETS_ENABLE } = process.env
 
@@ -60,23 +61,29 @@ const config = {
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.css'
     }),
+    new HtmlWebpackPlugin({
+      template: 'client/index.html',
+      favicon: 'favicon.ico'
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: `client/index.html`,
+          from: 'client/html.js',
           to: '[name][ext]'
         },
         {
-          from: 'client/html.js',
-          to: '[name][ext]',
-        },
-        {
           from: `client/assets/images`,
-          to: 'assets/images'
+          to: 'assets/images',
+          globOptions: {
+            ignore: ['.gitkeep']
+          }
         },
         {
           from: `client/assets/fonts`,
-          to: 'assets/fonts'
+          to: 'assets/fonts',
+          globOptions: {
+            ignore: ['.gitkeep']
+          }
         },
         {
           from: `server/public/favicon.ico`,

@@ -21,6 +21,7 @@ const config = {
       }),
       new CssMinimizerPlugin({
         exclude: /node_modules/,
+        parallel: true,
         minimizerOptions: {
           preset: [
             'default',
