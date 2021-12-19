@@ -1,4 +1,4 @@
-const Html = ({ body }) => {
+function Html({ body }) {
   return `
   <!DOCTYPE html>
   <html lang="en">
