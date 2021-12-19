@@ -1,12 +1,13 @@
 require('dotenv').config()
 
 const { resolve } = require('path')
-const webpack = require('webpack')
+
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { DefinePlugin } = require('webpack')
 
 const { SOCKETS_ENABLE } = process.env
 
@@ -90,8 +91,8 @@ const config = {
       ]
     }),
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      SOCKETS_ENABLE: !!SOCKETS_ENABLE
+    new DefinePlugin({
+      SOCKETS_ENABLE: SOCKETS_ENABLE === 'true'
     })
   ]
 }

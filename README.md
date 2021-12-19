@@ -1,6 +1,9 @@
 # MERN boilerplate
 Boilerplate for pet-projects
 
+## Notice
+Minimum supported `Node.js` version is `12.13.0`
+
 ## How to use it?
 Install modules
 ```
