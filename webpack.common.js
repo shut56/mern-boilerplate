@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const { SOCKETS_ENABLE } = process.env
 
@@ -21,16 +22,6 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
       {
         test: /\.(css|scss)$/i,
         use: [
@@ -50,7 +41,17 @@ const config = {
           'postcss-loader',
           'sass-loader'
         ]
-      }
+      },
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
     ]
   },
   plugins: [
@@ -62,8 +63,9 @@ const config = {
       filename: 'assets/css/style.css'
     }),
     new HtmlWebpackPlugin({
+      inject: false,
       template: 'client/index.html',
-      favicon: 'favicon.ico'
+      favicon: 'server/public/favicon.ico'
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -85,12 +87,9 @@ const config = {
             ignore: ['.gitkeep']
           }
         },
-        {
-          from: `server/public/favicon.ico`,
-          to: '[name][ext]'
-        }
       ]
     }),
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       SOCKETS_ENABLE: !!SOCKETS_ENABLE
     })
