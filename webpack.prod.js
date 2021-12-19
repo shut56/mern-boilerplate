@@ -13,7 +13,6 @@ const config = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        minify: TerserPlugin.esbuildMinify,
         terserOptions: {
           compress: {
             drop_console: true
