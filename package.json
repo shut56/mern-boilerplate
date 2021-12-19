@@ -1,6 +1,6 @@
 {
   "name": "mern-boilerplate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "author": "VitalyK",
   "license": "MIT",
@@ -8,9 +8,9 @@
     "dev": "clear & yarn run watch:server & yarn run watch:client",
     "watch:server": "nodemon start.js",
     "watch:client": "webpack serve --config webpack.dev.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.prod.js --progress  --profile",
     "lint": "eslint './server/**/*.js' './client/**/*.js' './client/**/*.jsx'",
     "prettier": "prettier './server/**/*.js' './client/**/*.js' './client/**/*.jsx' --write --no-error-on-unmatched-pattern",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js --progress  --profile",
     "start": "cross-env NODE_ENV=production && node start.js",
     "heroku-postbuild": "yarn run build:prod",
     "prepare": "husky install"
@@ -43,8 +43,7 @@
     "redux-thunk": "^2.3.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^4.0.0",
-    "socket.io-client": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.0"
+    "socket.io-client": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.0",
@@ -69,6 +68,7 @@
     "prettier": "^2.4.1",
     "sass-loader": "^12.1.0",
     "tailwindcss": "^2.0.2",
+    "terser-webpack-plugin": "^5.3.0",
     "webpack": "^5.11.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
