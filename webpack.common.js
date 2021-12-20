@@ -75,17 +75,21 @@ const config = {
           to: '[name][ext]'
         },
         {
-          from: `client/assets/images`,
+          from: 'client/assets/images',
           to: 'assets/images',
+          noErrorOnMissing: true,
           globOptions: {
-            ignore: ['.gitkeep']
+            dot: true,
+            ignore: ['**/.gitkeep']
           }
         },
         {
-          from: `client/assets/fonts`,
+          from: 'client/assets/fonts',
           to: 'assets/fonts',
+          noErrorOnMissing: true,
           globOptions: {
-            ignore: ['.gitkeep']
+            dot: true,
+            ignore: ['**/.gitkeep']
           }
         },
       ]
