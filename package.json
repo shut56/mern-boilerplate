@@ -12,7 +12,7 @@
     "prettier": "prettier './server/**/*.js' './client/**/*.js' './client/**/*.jsx' --write --no-error-on-unmatched-pattern",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js --progress --profile",
     "start": "cross-env NODE_ENV=production && node start.js",
-    "heroku-postbuild": "yarn run build:prod",
+    "heroku-postbuild": "yarn run build",
     "prepare": "husky install"
   },
   "dependencies": {
