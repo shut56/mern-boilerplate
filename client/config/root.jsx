@@ -31,9 +31,9 @@ const Root = () => {
       <ConnectedRouter history={history}>
         <Startup>
           <Switch>
-            <Route exact path="/" component={<Main />} />
-            <OnlyAnonymousRoute exact path="/anonymous" component={<Main />} />
-            <PrivateRoute exact path="/private" component={<Main />} />
+            <Route exact path="/" component={() => <Main />} />
+            <OnlyAnonymousRoute exact path="/anonymous" component={() => <Main />} />
+            <PrivateRoute exact path="/private" component={() => <Main />} />
           </Switch>
         </Startup>
       </ConnectedRouter>
