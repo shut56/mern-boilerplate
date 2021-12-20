@@ -7,11 +7,10 @@ Client/Server boilerplate for pet-projects
 - TailwindCSS
 - ESLint
 - ExpressJS
-- Socket.IO*
-- Mongoose*
+- Socket.IO`*`
+- Mongoose`*`
 - Webpack
-
-**Connected via environment variables.*
+`*`*Connected via environment variables.*
 
 ## Notice
 Minimum supported `Node.js` version is `12.13.0`
