@@ -9,3 +9,7 @@ dist
 
 # Yarn
 yarn-error.log
+
+# Misc
+.DS_Store
+coverage
