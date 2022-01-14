@@ -24,21 +24,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              sourceMap: true
-            }
-          },
-          'postcss-loader',
-          'sass-loader'
-        ]
-      },
-      {
         test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
         use: {
@@ -47,6 +32,22 @@ const config = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.(sa|sc|c)ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              importLoaders: 1,
+              sourceMap: true
+            }
+          },
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
     ]
   },
