@@ -16,10 +16,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/core": "^7.16.10",
     "@babel/eslint-parser": "^7.16.5",
-    "@babel/plugin-transform-runtime": "^7.16.8",
-    "@babel/preset-env": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.16.10",
+    "@babel/preset-env": "^7.16.10",
     "@babel/preset-react": "^7.16.7",
     "@babel/register": "^7.16.9",
     "@babel/runtime": "^7.16.7",
@@ -30,7 +30,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "history": "4.10.1",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.13.14",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
