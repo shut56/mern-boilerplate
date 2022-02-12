@@ -10,6 +10,7 @@ Client/Server boilerplate for pet-projects
 - Socket.IO`*`
 - Mongoose`*`
 - Webpack
+
 `*`*Connected via environment variables.*
 
 ## Notice
